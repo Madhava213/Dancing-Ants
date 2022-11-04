@@ -68,21 +68,168 @@ export class AnimatedCharacter extends gfx.Transform3
     {
         // TO DO (PART 1): Draw the coordinate axes for the bone
 
+        const axes = new gfx.Axes3(0.15);
+        axes.lookAt(bone.direction);
+        bone.transform.add(axes);
+
 
         // TO DO (PART 3): You will want to draw something different for each
         // part of the body. An if statement like this is an easy way
         // to do that.  You can find the names of additional bones in 
         // the .asf files.  Anything that you create will be automatically
         // be made invisible when the coordinate axes are visibile.
-        // if(bone.name == 'head')
-        // {
-        // }
-        // else if(bone.name == 'upperback')
-        // {
-        // }
+        const antColor = new gfx.Color(0.69, 0.36, 0.29);
+        
+        if (bone.name == 'head') {
+            // Head/Face
+            const headBone = new gfx.SphereMesh();
+            headBone.scale.multiply(new gfx.Vector3(0.1, 0.2, 0.1));
+            headBone.material.setColor(antColor);
+            headBone.rotateX(gfx.MathUtils.degreesToRadians(-30));
+            bone.transform.add(headBone);
+            
+            // Left Antenna
+            const leftAntenna = new gfx.BoxMesh(0.01, 0.1, 0.01);
+            leftAntenna.translate(new gfx.Vector3(-0.05, 0.18, 0));
+            leftAntenna.rotateZ(gfx.MathUtils.degreesToRadians(30));
+            leftAntenna.material.setColor(new gfx.Color(0, 0, 0));
+            headBone.children.push(leftAntenna);
+            bone.transform.add(leftAntenna);
 
+            // Left Antenna Tip
+            const leftAntennaTip = new gfx.ConeMesh(0.01, 0.1, 10);
+            leftAntennaTip.translate(new gfx.Vector3(-0.07, 0.22, 0.05));
+            leftAntennaTip.rotateZ(gfx.MathUtils.degreesToRadians(30));
+            leftAntennaTip.rotateX(gfx.MathUtils.degreesToRadians(90));
+            leftAntennaTip.material.setColor(new gfx.Color(0, 0, 0));
+            leftAntenna.children.push(leftAntennaTip);
+            bone.transform.add(leftAntennaTip);
 
+            
+            // Right Antenna
+            const rightAntenna = new gfx.BoxMesh(0.01, 0.1, 0.01);
+            rightAntenna.translate(new gfx.Vector3(0.05, 0.18, 0));
+            rightAntenna.rotateZ(gfx.MathUtils.degreesToRadians(-30));
+            rightAntenna.material.setColor(new gfx.Color(0, 0, 0));
+            headBone.children.push(rightAntenna);
+            bone.transform.add(rightAntenna);
+
+            // Right Antenna Tip
+            const rightAntennaTip = new gfx.ConeMesh(0.01, 0.1, 10);
+            rightAntennaTip.translate(new gfx.Vector3(0.07, 0.22, 0.05));
+            rightAntennaTip.rotateZ(gfx.MathUtils.degreesToRadians(-30));
+            rightAntennaTip.rotateX(gfx.MathUtils.degreesToRadians(90));
+            rightAntennaTip.material.setColor(new gfx.Color(0, 0, 0));
+            rightAntenna.children.push(rightAntennaTip);
+            bone.transform.add(rightAntennaTip);
+
+            // Left Eye
+            const leftEye = new gfx.SphereMesh(0.02);
+            leftEye.translate(new gfx.Vector3(-0.04, 0.1, 0.05));
+            leftEye.material.setColor(new gfx.Color(0, 0, 0))
+            headBone.children.push(leftEye);
+            bone.transform.add(leftEye);
+            
+            // Right Eye
+            const rightEye = new gfx.SphereMesh(0.02);
+            rightEye.translate(new gfx.Vector3(0.04, 0.1, 0.05));
+            rightEye.material.setColor(new gfx.Color(0, 0, 0))
+            headBone.children.push(rightEye);
+            bone.transform.add(rightEye);
+
+            // Mouth
+            const mouth = new gfx.SphereMesh(0.03);
+            mouth.translate(new gfx.Vector3(0, -0.14, 0.12));
+            mouth.scale.multiply(new gfx.Vector3(1.3, 1, 1));
+            mouth.material.setColor(antColor)
+            headBone.children.push(mouth);
+            bone.transform.add(mouth);
+        }
+        else if (bone.name == 'lowerneck') {
+            // Lower Neck
+            const lowerNeck = new gfx.BoxMesh(0.02, 0.3, 0.02);
+            lowerNeck.translate(new gfx.Vector3(0, 0.1, -0.05));
+            lowerNeck.rotateX(gfx.MathUtils.degreesToRadians(30));
+            lowerNeck.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(lowerNeck);
+        }
+        else if (bone.name == 'thorax') { 
+            // Thorax
+            const thorax = new gfx.SphereMesh(0.1);
+            thorax.material.setColor(antColor);
+            thorax.translate(new gfx.Vector3(0, 0.07, -0.07));
+            bone.transform.add(thorax);
+        }
+        else if (bone.name == 'upperback') { 
+            // Upper Back
+            const upperBack = new gfx.SphereMesh(0.1);
+            upperBack.material.setColor(antColor);
+            upperBack.translate(new gfx.Vector3(0, 0.05, -0.08));
+            bone.transform.add(upperBack);
+        }
+        else if (bone.name == 'lowerback') { 
+            // Lower Back
+            const lowerBack = new gfx.SphereMesh(0.1);
+            lowerBack.material.setColor(antColor);
+            lowerBack.scale.multiply(new gfx.Vector3(1.5,2.8,1.5));
+            lowerBack.rotateX(gfx.MathUtils.degreesToRadians(25))
+            lowerBack.translate(new gfx.Vector3(0, -0.15, -0.12));
+            bone.transform.add(lowerBack);
+        }
+        else if (bone.name == 'lfemur') {
+            // Left Femur
+            const leftFemur = new gfx.BoxMesh(0.02, 0.45, 0.02);
+            leftFemur.translate(new gfx.Vector3(-0.08, 0.25, -0.1));
+            leftFemur.rotateX(gfx.MathUtils.degreesToRadians(-10));
+            leftFemur.rotateZ(gfx.MathUtils.degreesToRadians(20));
+            leftFemur.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftFemur);
+        }
+        else if (bone.name == 'rfemur') {
+            // Right Femur
+            const rightFemur = new gfx.BoxMesh(0.02, 0.45, 0.02);
+            rightFemur.translate(new gfx.Vector3(0.08, 0.25, -0.1));
+            rightFemur.rotateX(gfx.MathUtils.degreesToRadians(-10));
+            rightFemur.rotateZ(gfx.MathUtils.degreesToRadians(-20));
+            rightFemur.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightFemur);
+        }
+        else if (bone.name == 'ltibia') {
+            // Left Tibia
+            const leftTibia = new gfx.BoxMesh(0.02, 0.4, 0.02);
+            leftTibia.translate(new gfx.Vector3(-0.05, 0.2, -0.0));
+            leftTibia.rotateX(gfx.MathUtils.degreesToRadians(-25));
+            leftTibia.rotateZ(gfx.MathUtils.degreesToRadians(20));
+            leftTibia.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftTibia);
+        }
+        else if (bone.name == 'rtibia') {
+            // Right Tibia
+            const rightTibia = new gfx.BoxMesh(0.02, 0.4, 0.02);
+            rightTibia.translate(new gfx.Vector3(0.05, 0.2, -0.0));
+            rightTibia.rotateX(gfx.MathUtils.degreesToRadians(-25));
+            rightTibia.rotateZ(gfx.MathUtils.degreesToRadians(-20));
+            rightTibia.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightTibia);
+        }
+        else if (bone.name == 'lfoot') {
+            // Left Foot
+            const leftFoot = new gfx.BoxMesh(0.04, 0.02, 0.1);
+            leftFoot.translateZ(0.05);
+            leftFoot.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftFoot);
+        }
+        else if (bone.name == 'rfoot') {
+            // Right Foot
+            const rightFoot = new gfx.BoxMesh(0.04, 0.02, 0.1);
+            rightFoot.translateZ(0.05);
+            rightFoot.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightFoot);
+        }
         // TO DO (PART 1): Recursively call this function for each of the bone's children
+        bone.children.forEach((rootBone: Bone) => {
+            this.createMeshesRecursive(rootBone)
+        });
     }
 
     loadSkeleton(filename: string): void

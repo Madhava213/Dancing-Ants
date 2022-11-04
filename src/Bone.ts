@@ -96,5 +96,16 @@ export class Bone
          * the axes that represent the hands of the two dancers should line up properly when
          * the couple is dancing together.
          */
+
+        this.transform.position.rotate(this.boneToRotationSpace);
+        this.transform.position.rotate(pose.getJointRotation(this.name));
+        this.transform.position.rotate(this.rotationToBoneSpace);
+
+        this.transform.rotation.multiply(this.rotationToBoneSpace);
+        this.transform.rotation.multiply(pose.getJointRotation(this.name));
+        this.transform.rotation.multiply(this.boneToRotationSpace);
+        this.children.forEach((child: Bone) => {
+            child.update(pose);
+        });
     }
 }
