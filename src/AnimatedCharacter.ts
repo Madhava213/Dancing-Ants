@@ -78,7 +78,7 @@ export class AnimatedCharacter extends gfx.Transform3
         // to do that.  You can find the names of additional bones in 
         // the .asf files.  Anything that you create will be automatically
         // be made invisible when the coordinate axes are visibile.
-        const antColor = new gfx.Color(0.69, 0.36, 0.29);
+        const antColor = new gfx.Color(0.47, 0.23, 0.13);
         
         if (bone.name == 'head') {
             // Head/Face
@@ -225,7 +225,67 @@ export class AnimatedCharacter extends gfx.Transform3
             rightFoot.translateZ(0.05);
             rightFoot.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightFoot);
+        }else if (bone.name == 'lclavicle') {
+            // Left Clavicle
+            const leftClavicle = new gfx.BoxMesh(0.02, 0.25, 0.02);
+            leftClavicle.translate(new gfx.Vector3(-0.06, 0, -0.1));
+            leftClavicle.rotateZ(gfx.MathUtils.degreesToRadians(-75));
+            leftClavicle.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftClavicle);
         }
+        else if (bone.name == 'rclavicle') {
+            // Right Clavicle
+            const rightClavicle = new gfx.BoxMesh(0.02, 0.25, 0.02);
+            rightClavicle.translate(new gfx.Vector3(0.06, 0, -0.1));
+            rightClavicle.rotateZ(gfx.MathUtils.degreesToRadians(75));
+            rightClavicle.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightClavicle);
+        }
+        else if (bone.name == 'lhumerus') {
+            // Left Humerus
+            const leftHumerus = new gfx.BoxMesh(0.35, 0.02, 0.02);
+            leftHumerus.translate(new gfx.Vector3(-0.1, -0.02, -0.1));
+            leftHumerus.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftHumerus);
+        }
+        else if (bone.name == 'rhumerus') {
+            // Right Humerus
+            const rightHumerus = new gfx.BoxMesh(0.35, 0.02, 0.02);
+            rightHumerus.translate(new gfx.Vector3(0.1, -0.02, -0.1));
+            rightHumerus.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightHumerus);
+        }
+        else if (bone.name == 'lhand') {
+            // Left Hand
+            const leftHand = new gfx.BoxMesh(0.25, 0.02, 0.02);
+            leftHand.translate(new gfx.Vector3(-0.15, -0.02, -0.1));
+            leftHand.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftHand);
+        }
+        else if (bone.name == 'rhand') {
+            // Right Hand
+            const rightHand = new gfx.BoxMesh(0.25, 0.02, 0.02);
+            rightHand.translate(new gfx.Vector3(0.15, -0.02, -0.1));
+            rightHand.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightHand);
+        }
+        else if (bone.name == 'lfingers') {
+            // Left Fingers
+            const leftFingers = new gfx.BoxMesh(0.02, 0.04, 0.1);
+            leftFingers.rotateY(gfx.MathUtils.degreesToRadians(30));
+            leftFingers.translate(new gfx.Vector3(0.02,0,-0.1));
+            leftFingers.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftFingers);
+        }
+        else if (bone.name == 'rfingers') {
+            // Right Fingers
+            const rightFingers = new gfx.BoxMesh(0.02, 0.04, 0.1);
+            rightFingers.rotateY(gfx.MathUtils.degreesToRadians(-30));
+            rightFingers.translate(new gfx.Vector3(0.02,0,-0.1));
+            rightFingers.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightFingers);
+        }
+        
         // TO DO (PART 1): Recursively call this function for each of the bone's children
         bone.children.forEach((rootBone: Bone) => {
             this.createMeshesRecursive(rootBone)

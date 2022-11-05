@@ -140,6 +140,10 @@ export class DanceApp extends gfx.GfxApp
         // You can pick your own motions from the CMU mocap database
         // or you can use the same dance moves that we did.  
         // We used: 05_10.amc, 05_09.amc, 05_20.amc, and 05_06.amc
+        this.balletDanceMotions.push(this.balletAnt.loadMotionClip('./assets/data/05_10.amc'));
+        this.balletDanceMotions.push(this.balletAnt.loadMotionClip('./assets/data/05_09.amc'));
+        this.balletDanceMotions.push(this.balletAnt.loadMotionClip('./assets/data/05_20.amc'));
+        this.balletDanceMotions.push(this.balletAnt.loadMotionClip('./assets/data/05_06.amc'));
 
     }
 
@@ -168,7 +172,17 @@ export class DanceApp extends gfx.GfxApp
         // TO DO (PART 4): You will need to trim the new animations you have
         // added to isolate the interesting portions of the motion.  You can
         // then add them similarly to the first ballet dance motion.
+        this.balletDanceMotions[1].trimFront(280);
+        this.balletDanceMotions[1].trimBack(200);
+
+        this.balletDanceMotions[2].trimFront(280);
+        this.balletDanceMotions[2].trimBack(200);
         
+        this.balletDanceMotions[3].trimFront(280);
+        this.balletDanceMotions[3].trimBack(200);
+
+        this.balletDanceMotions[4].trimFront(280);
+        this.balletDanceMotions[4].trimBack(200);
 
         this.salsaAntLead.createMeshes();
         this.salsaAntFollow.createMeshes();
@@ -245,21 +259,29 @@ export class DanceApp extends gfx.GfxApp
     playBalletMotion2(): void
     {
         // TO DO (PART 4): Overlay the motion, similar to the call above
+        this.balletAnt.overlay(this.balletDanceMotions[1], 100);
+        console.log('Queueing ballet motion 1. Queue size is ' + this.balletAnt.getQueueCount() + '.');
     }
 
     playBalletMotion3(): void
     {
         // TO DO (PART 4): Overlay the motion, similar to the call above
+        this.balletAnt.overlay(this.balletDanceMotions[2], 100);
+        console.log('Queueing ballet motion 1. Queue size is ' + this.balletAnt.getQueueCount() + '.');
     }
 
     playBalletMotion4(): void
     {
         // TO DO (PART 4): Overlay the motion, similar to the call above
+        this.balletAnt.overlay(this.balletDanceMotions[3], 100);
+        console.log('Queueing ballet motion 1. Queue size is ' + this.balletAnt.getQueueCount() + '.');
     }
 
     playBalletMotion5(): void
     {
         // TO DO (PART 4): Overlay the motion, similar to the call above
+        this.balletAnt.overlay(this.balletDanceMotions[4], 100);
+        console.log('Queueing ballet motion 1. Queue size is ' + this.balletAnt.getQueueCount() + '.');
     }
 
 }
