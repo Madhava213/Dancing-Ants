@@ -178,112 +178,129 @@ export class AnimatedCharacter extends gfx.Transform3
         }
         else if (bone.name == 'lfemur') {
             // Left Femur
-            const leftFemur = new gfx.BoxMesh(0.02, 0.45, 0.02);
-            leftFemur.translate(new gfx.Vector3(-0.08, 0.25, -0.1));
-            leftFemur.rotateX(gfx.MathUtils.degreesToRadians(-10));
-            leftFemur.rotateZ(gfx.MathUtils.degreesToRadians(20));
+            const leftFemur = new gfx.BoxMesh(0.02, 0.02, bone.length * 1.1);
+            leftFemur.translate(new gfx.Vector3(-0.08, 0.27, -0.1));
+            leftFemur.lookAt(bone.direction);
             leftFemur.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(leftFemur);
         }
         else if (bone.name == 'rfemur') {
             // Right Femur
-            const rightFemur = new gfx.BoxMesh(0.02, 0.45, 0.02);
-            rightFemur.translate(new gfx.Vector3(0.08, 0.25, -0.1));
-            rightFemur.rotateX(gfx.MathUtils.degreesToRadians(-10));
-            rightFemur.rotateZ(gfx.MathUtils.degreesToRadians(-20));
+            const rightFemur = new gfx.BoxMesh(0.02, 0.02, bone.length * 1.1);
+            rightFemur.translate(new gfx.Vector3(0.08, 0.27, -0.1));
+            rightFemur.lookAt(bone.direction);
             rightFemur.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightFemur);
         }
         else if (bone.name == 'ltibia') {
             // Left Tibia
-            const leftTibia = new gfx.BoxMesh(0.02, 0.4, 0.02);
-            leftTibia.translate(new gfx.Vector3(-0.05, 0.2, -0.0));
-            leftTibia.rotateX(gfx.MathUtils.degreesToRadians(-25));
-            leftTibia.rotateZ(gfx.MathUtils.degreesToRadians(20));
+            const leftTibia = new gfx.BoxMesh(0.02, 0.02, bone.length);
+            leftTibia.translate(new gfx.Vector3(-0.06, 0.2, -0.1));
+            leftTibia.lookAt(bone.direction);
             leftTibia.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(leftTibia);
         }
         else if (bone.name == 'rtibia') {
             // Right Tibia
-            const rightTibia = new gfx.BoxMesh(0.02, 0.4, 0.02);
-            rightTibia.translate(new gfx.Vector3(0.05, 0.2, -0.0));
-            rightTibia.rotateX(gfx.MathUtils.degreesToRadians(-25));
-            rightTibia.rotateZ(gfx.MathUtils.degreesToRadians(-20));
+            const rightTibia = new gfx.BoxMesh(0.02, 0.02, bone.length);
+            rightTibia.translate(new gfx.Vector3(0.06, 0.2, -0.1));
+            rightTibia.lookAt(bone.direction);
             rightTibia.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightTibia);
         }
         else if (bone.name == 'lfoot') {
             // Left Foot
             const leftFoot = new gfx.BoxMesh(0.04, 0.02, 0.1);
-            leftFoot.translateZ(0.05);
+            leftFoot.translate(new gfx.Vector3(0, 0.1, -0.1));
             leftFoot.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(leftFoot);
         }
         else if (bone.name == 'rfoot') {
             // Right Foot
             const rightFoot = new gfx.BoxMesh(0.04, 0.02, 0.1);
-            rightFoot.translateZ(0.05);
+            rightFoot.translate(new gfx.Vector3(0, 0.1, -0.1));
             rightFoot.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightFoot);
-        }else if (bone.name == 'lclavicle') {
+        }
+        else if (bone.name == 'lclavicle') {
             // Left Clavicle
-            const leftClavicle = new gfx.BoxMesh(0.02, 0.25, 0.02);
-            leftClavicle.translate(new gfx.Vector3(-0.06, 0, -0.1));
-            leftClavicle.rotateZ(gfx.MathUtils.degreesToRadians(-75));
+            const leftClavicle = new gfx.BoxMesh(0.02, 0.02, bone.length);
+            leftClavicle.translate(new gfx.Vector3(-0.03, 0, -0.1));
+            leftClavicle.lookAt(bone.direction);
             leftClavicle.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(leftClavicle);
         }
         else if (bone.name == 'rclavicle') {
             // Right Clavicle
-            const rightClavicle = new gfx.BoxMesh(0.02, 0.25, 0.02);
-            rightClavicle.translate(new gfx.Vector3(0.06, 0, -0.1));
-            rightClavicle.rotateZ(gfx.MathUtils.degreesToRadians(75));
+            const rightClavicle = new gfx.BoxMesh(0.02, 0.02, bone.length);
+            rightClavicle.translate(new gfx.Vector3(0.03, 0, -0.1));
+            rightClavicle.lookAt(bone.direction);
             rightClavicle.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightClavicle);
         }
         else if (bone.name == 'lhumerus') {
             // Left Humerus
-            const leftHumerus = new gfx.BoxMesh(0.35, 0.02, 0.02);
-            leftHumerus.translate(new gfx.Vector3(-0.1, -0.02, -0.1));
+            const leftHumerus = new gfx.BoxMesh(0.02, 0.02, bone.length * 1.4);
+            leftHumerus.translate(new gfx.Vector3(-0.04, 0, -0.1));
+            leftHumerus.lookAt(bone.direction);
             leftHumerus.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(leftHumerus);
         }
         else if (bone.name == 'rhumerus') {
             // Right Humerus
-            const rightHumerus = new gfx.BoxMesh(0.35, 0.02, 0.02);
-            rightHumerus.translate(new gfx.Vector3(0.1, -0.02, -0.1));
+            const rightHumerus = new gfx.BoxMesh(0.02, 0.02, bone.length * 1.4);
+            rightHumerus.translate(new gfx.Vector3(0.04, 0, -0.1));
+            rightHumerus.lookAt(bone.direction);
             rightHumerus.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightHumerus);
         }
-        else if (bone.name == 'lhand') {
-            // Left Hand
-            const leftHand = new gfx.BoxMesh(0.25, 0.02, 0.02);
-            leftHand.translate(new gfx.Vector3(-0.15, -0.02, -0.1));
-            leftHand.material.setColor(new gfx.Color(0, 0, 0));
-            bone.transform.add(leftHand);
+        else if (bone.name == 'lradius') {
+            // Left Radius
+            const leftRadius = new gfx.BoxMesh(0.02, 0.02, bone.length * 1.5);
+            leftRadius.translate(new gfx.Vector3(0, 0, -0.1));
+            leftRadius.lookAt(bone.direction);
+            leftRadius.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftRadius);
         }
-        else if (bone.name == 'rhand') {
-            // Right Hand
-            const rightHand = new gfx.BoxMesh(0.25, 0.02, 0.02);
-            rightHand.translate(new gfx.Vector3(0.15, -0.02, -0.1));
-            rightHand.material.setColor(new gfx.Color(0, 0, 0));
-            bone.transform.add(rightHand);
+        else if (bone.name == 'rradius') {
+            // Right Radius
+            const rightRadius = new gfx.BoxMesh(0.02, 0.02, bone.length * 1.5);
+            rightRadius.translate(new gfx.Vector3(0, 0, -0.1));
+            rightRadius.lookAt(bone.direction);
+            rightRadius.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightRadius);
         }
         else if (bone.name == 'lfingers') {
             // Left Fingers
-            const leftFingers = new gfx.BoxMesh(0.02, 0.04, 0.1);
-            leftFingers.rotateY(gfx.MathUtils.degreesToRadians(30));
-            leftFingers.translate(new gfx.Vector3(0.02,0,-0.1));
+            const leftFingers = new gfx.BoxMesh(0.02,0.01,  bone.length * 2);
+            leftFingers.translate(new gfx.Vector3(0, 0, -0.1));
+            leftFingers.lookAt(bone.direction);
             leftFingers.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(leftFingers);
         }
         else if (bone.name == 'rfingers') {
             // Right Fingers
-            const rightFingers = new gfx.BoxMesh(0.02, 0.04, 0.1);
-            rightFingers.rotateY(gfx.MathUtils.degreesToRadians(-30));
-            rightFingers.translate(new gfx.Vector3(0.02,0,-0.1));
+            const rightFingers = new gfx.BoxMesh(0.02,0.01,  bone.length * 2);
+            rightFingers.translate(new gfx.Vector3(0, 0, -0.1));
+            rightFingers.lookAt(bone.direction);
             rightFingers.material.setColor(new gfx.Color(0, 0, 0));
             bone.transform.add(rightFingers);
+        }
+        else if (bone.name == 'lthumb') {
+            // Left Thumb
+            const leftThumb = new gfx.BoxMesh(0.02, 0.01, bone.length * 1.5);
+            leftThumb.translate(new gfx.Vector3(0, 0, -0.1));
+            leftThumb.lookAt(bone.direction);
+            leftThumb.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(leftThumb);
+        }
+        else if (bone.name == 'rthumb') {
+            // Right Thumb
+            const rightThumb = new gfx.BoxMesh(0.02, 0.01, bone.length * 1.5);
+            rightThumb.translate(new gfx.Vector3(0, 0, -0.1));
+            rightThumb.lookAt(bone.direction);
+            rightThumb.material.setColor(new gfx.Color(0, 0, 0));
+            bone.transform.add(rightThumb);
         }
         
         // TO DO (PART 1): Recursively call this function for each of the bone's children

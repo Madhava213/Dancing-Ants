@@ -181,8 +181,8 @@ export class DanceApp extends gfx.GfxApp
         this.balletDanceMotions[3].trimFront(280);
         this.balletDanceMotions[3].trimBack(200);
 
-        this.balletDanceMotions[4].trimFront(280);
-        this.balletDanceMotions[4].trimBack(200);
+        this.balletDanceMotions[4].trimFront(140);
+        this.balletDanceMotions[4].trimBack(310);
 
         this.salsaAntLead.createMeshes();
         this.salsaAntFollow.createMeshes();
